@@ -1,0 +1,662 @@
+<?xml version="1.0"?>
+<!-- Open_Manipulator Chain -->
+<robot name="robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find camera_description)/camera_description/camera.gazebo.xacro"/>
+  <xacro:arg name="d1"    default="0.50"/>
+  <xacro:arg name="d2"    default="0.75"/>
+  <xacro:arg name="d3"    default="1.00"/>
+  <xacro:arg name="d4"    default="2.00"/>
+  <xacro:arg name="d5"    default="3.00"/>
+  <xacro:arg name="h1"    default="0.11"/>
+  <xacro:property name="d1" value="$(arg d1)" />
+  <xacro:property name="d2" value="$(arg d2)" />
+  <xacro:property name="d3" value="$(arg d3)" />
+  <xacro:property name="d4" value="$(arg d4)" />
+  <xacro:property name="d5" value="$(arg d5)" />
+  <xacro:property name="h1" value="$(arg h1)" />
+  <xacro:property name="PI" value="3.14159265" />
+  <xacro:property name="c45" value="0.70710678" />
+
+  <link name="base_footprint"/>
+
+  <joint name="base_joint1" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link1" />
+    <origin xyz="8 8 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link1">
+    <collision>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </collision>
+     <inertial>
+      <mass value="100" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0"
+               izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="base_joint2" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link2" />
+    <origin xyz="10 -10 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link2">
+    <collision>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </collision>
+     <inertial>
+      <mass value="100" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0"
+               izz="1.0" />
+    </inertial>
+  </link>
+  <joint name="base_joint3" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link3" />
+    <origin xyz="-10 10 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link3">
+    <collision>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </collision>
+     <inertial>
+      <mass value="100" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0"
+               izz="1.0" />
+    </inertial>
+  </link>
+  <joint name="base_joint4" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link4" />
+    <origin xyz="-10 -10 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link4">
+    <collision>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </collision>
+     <inertial>
+      <mass value="100" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0"
+               izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="camera1_joint" type="fixed">
+    <origin xyz="${-d1} 0 ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera1_link"/>
+  </joint>
+  <link name="camera1_link"/>
+
+  <joint name="camera2_joint" type="fixed">
+    <origin xyz="${-d2} 0 ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera2_link"/>
+  </joint>
+  <link name="camera2_link"/>
+
+  <joint name="camera3_joint" type="fixed">
+    <origin xyz="${-d3} 0 ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera3_link"/>
+  </joint>
+  <link name="camera3_link"/>
+
+  <joint name="camera4_joint" type="fixed">
+    <origin xyz="${-d4} 0 ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera4_link"/>
+  </joint>
+  <link name="camera4_link"/>
+
+  <joint name="camera5_joint" type="fixed">
+    <origin xyz="${-d5} 0 ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera5_link"/>
+  </joint>
+  <link name="camera5_link"/>
+
+  <joint name="camera6_joint" type="fixed">
+    <origin xyz="${d1} 0 ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera6_link"/>
+  </joint>
+  <link name="camera6_link"/>
+
+  <joint name="camera7_joint" type="fixed">
+    <origin xyz="${d2} 0 ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera7_link"/>
+  </joint>
+  <link name="camera7_link"/>
+
+  <joint name="camera8_joint" type="fixed">
+    <origin xyz="${d3} 0 ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera8_link"/>
+  </joint>
+  <link name="camera8_link"/>
+
+  <joint name="camera9_joint" type="fixed">
+    <origin xyz="${d4} 0 ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera9_link"/>
+  </joint>
+  <link name="camera9_link"/>
+
+  <joint name="camera10_joint" type="fixed">
+    <origin xyz="${d5} 0 ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera10_link"/>
+  </joint>
+  <link name="camera10_link"/>
+
+  <joint name="camera11_joint" type="fixed">
+    <origin xyz="0 ${-d1} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera11_link"/>
+  </joint>
+  <link name="camera11_link"/>
+
+  <joint name="camera12_joint" type="fixed">
+    <origin xyz="0 ${-d2} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera12_link"/>
+  </joint>
+  <link name="camera12_link"/>
+
+  <joint name="camera13_joint" type="fixed">
+    <origin xyz="0 ${-d3} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera13_link"/>
+  </joint>
+  <link name="camera13_link"/>
+
+  <joint name="camera14_joint" type="fixed">
+    <origin xyz="0 ${-d4} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera14_link"/>
+  </joint>
+  <link name="camera14_link"/>
+
+  <joint name="camera15_joint" type="fixed">
+    <origin xyz="0 ${-d5} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera15_link"/>
+  </joint>
+  <link name="camera15_link"/>
+
+  <joint name="camera16_joint" type="fixed">
+    <origin xyz="0 ${d1} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera16_link"/>
+  </joint>
+  <link name="camera16_link"/>
+
+  <joint name="camera17_joint" type="fixed">
+    <origin xyz="0 ${d2} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera17_link"/>
+  </joint>
+  <link name="camera17_link"/>
+
+  <joint name="camera18_joint" type="fixed">
+    <origin xyz="0 ${d3} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera18_link"/>
+  </joint>
+  <link name="camera18_link"/>
+
+  <joint name="camera19_joint" type="fixed">
+    <origin xyz="0 ${d4} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera19_link"/>
+  </joint>
+  <link name="camera19_link"/>
+
+  <joint name="camera20_joint" type="fixed">
+    <origin xyz="0 ${d5} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera20_link"/>
+  </joint>
+  <link name="camera20_link"/>
+
+  <joint name="camera21_joint" type="fixed">
+    <origin xyz="${-c45*d1} ${-c45*d1} ${h1}" rpy="0 0 ${PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera21_link"/>
+  </joint>
+  <link name="camera21_link"/>
+
+  <joint name="camera22_joint" type="fixed">
+    <origin xyz="${-c45*d2} ${-c45*d2} ${h1}" rpy="0 0 ${PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera22_link"/>
+  </joint>
+  <link name="camera22_link"/>
+
+  <joint name="camera23_joint" type="fixed">
+    <origin xyz="${-c45*d3} ${-c45*d3} ${h1}" rpy="0 0 ${PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera23_link"/>
+  </joint>
+  <link name="camera23_link"/>
+
+  <joint name="camera24_joint" type="fixed">
+    <origin xyz="${-c45*d4} ${-c45*d4} ${h1}" rpy="0 0 ${PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera24_link"/>
+  </joint>
+  <link name="camera24_link"/>
+
+  <joint name="camera25_joint" type="fixed">
+    <origin xyz="${-c45*d5} ${-c45*d5} ${h1}" rpy="0 0 ${PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera25_link"/>
+  </joint>
+  <link name="camera25_link"/>
+
+
+  <joint name="camera26_joint" type="fixed">
+    <origin xyz="${-c45*d1} ${c45*d1} ${h1}" rpy="0 0 ${-PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera26_link"/>
+  </joint>
+  <link name="camera26_link"/>
+
+  <joint name="camera27_joint" type="fixed">
+    <origin xyz="${-c45*d2} ${c45*d2} ${h1}" rpy="0 0 ${-PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera27_link"/>
+  </joint>
+  <link name="camera27_link"/>
+
+  <joint name="camera28_joint" type="fixed">
+    <origin xyz="${-c45*d3} ${c45*d3} ${h1}" rpy="0 0 ${-PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera28_link"/>
+  </joint>
+  <link name="camera28_link"/>
+
+  <joint name="camera29_joint" type="fixed">
+    <origin xyz="${-c45*d4} ${c45*d4} ${h1}" rpy="0 0 ${-PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera29_link"/>
+  </joint>
+  <link name="camera29_link"/>
+
+  <joint name="camera30_joint" type="fixed">
+    <origin xyz="${-c45*d5} ${c45*d5} ${h1}" rpy="0 0 ${-PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera30_link"/>
+  </joint>
+  <link name="camera30_link"/>
+
+  <joint name="camera31_joint" type="fixed">
+    <origin xyz="${c45*d1} ${-c45*d1} ${h1}" rpy="0 0 ${PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera31_link"/>
+  </joint>
+  <link name="camera31_link"/>
+
+  <joint name="camera32_joint" type="fixed">
+    <origin xyz="${c45*d2} ${-c45*d2} ${h1}" rpy="0 0 ${PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera32_link"/>
+  </joint>
+  <link name="camera32_link"/>
+
+  <joint name="camera33_joint" type="fixed">
+    <origin xyz="${c45*d3} ${-c45*d3} ${h1}" rpy="0 0 ${PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera33_link"/>
+  </joint>
+  <link name="camera33_link"/>
+
+  <joint name="camera34_joint" type="fixed">
+    <origin xyz="${c45*d4} ${-c45*d4} ${h1}" rpy="0 0 ${PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera34_link"/>
+  </joint>
+  <link name="camera34_link"/>
+
+  <joint name="camera35_joint" type="fixed">
+    <origin xyz="${c45*d5} ${-c45*d5} ${h1}" rpy="0 0 ${PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera35_link"/>
+  </joint>
+  <link name="camera35_link"/>
+
+  <joint name="camera36_joint" type="fixed">
+    <origin xyz="${c45*d1} ${c45*d1} ${h1}" rpy="0 0 ${-PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera36_link"/>
+  </joint>
+  <link name="camera36_link"/>
+
+  <joint name="camera37_joint" type="fixed">
+    <origin xyz="${c45*d2} ${c45*d2} ${h1}" rpy="0 0 ${-PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera37_link"/>
+  </joint>
+  <link name="camera37_link"/>
+
+  <joint name="camera38_joint" type="fixed">
+    <origin xyz="${c45*d3} ${c45*d3} ${h1}" rpy="0 0 ${-PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera38_link"/>
+  </joint>
+  <link name="camera38_link"/>
+
+  <joint name="camera39_joint" type="fixed">
+    <origin xyz="${c45*d4} ${c45*d4} ${h1}" rpy="0 0 ${-PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera39_link"/>
+  </joint>
+  <link name="camera39_link"/>
+
+  <joint name="camera40_joint" type="fixed">
+    <origin xyz="${c45*d5} ${c45*d5} ${h1}" rpy="0 0 ${-PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera40_link"/>
+  </joint>
+  <link name="camera40_link"/>
+
+  <joint name="camera41_joint" type="fixed">
+    <origin xyz="${-d1} ${d1/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera41_link"/>
+  </joint>
+  <link name="camera41_link"/>
+
+  <joint name="camera42_joint" type="fixed">
+    <origin xyz="${-d2} ${d2/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera42_link"/>
+  </joint>
+  <link name="camera42_link"/>
+
+  <joint name="camera43_joint" type="fixed">
+    <origin xyz="${-d3} ${d3/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera43_link"/>
+  </joint>
+  <link name="camera43_link"/>
+
+  <joint name="camera44_joint" type="fixed">
+    <origin xyz="${-d4} ${d4/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera44_link"/>
+  </joint>
+  <link name="camera44_link"/>
+
+  <joint name="camera45_joint" type="fixed">
+    <origin xyz="${-d5} ${d5/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera45_link"/>
+  </joint>
+  <link name="camera45_link"/>
+
+  <joint name="camera46_joint" type="fixed">
+    <origin xyz="${d1} ${-d1/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera46_link"/>
+  </joint>
+  <link name="camera46_link"/>
+
+  <joint name="camera47_joint" type="fixed">
+    <origin xyz="${d2} ${-d2/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera47_link"/>
+  </joint>
+  <link name="camera47_link"/>
+
+  <joint name="camera48_joint" type="fixed">
+    <origin xyz="${d3} ${-d3/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera48_link"/>
+  </joint>
+  <link name="camera48_link"/>
+
+  <joint name="camera49_joint" type="fixed">
+    <origin xyz="${d4} ${-d4/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera49_link"/>
+  </joint>
+  <link name="camera49_link"/>
+
+  <joint name="camera50_joint" type="fixed">
+    <origin xyz="${d5} ${-d5/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera50_link"/>
+  </joint>
+  <link name="camera50_link"/>
+
+  <joint name="camera51_joint" type="fixed">
+    <origin xyz="${-d1/2} ${-d1} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera51_link"/>
+  </joint>
+  <link name="camera51_link"/>
+
+  <joint name="camera52_joint" type="fixed">
+    <origin xyz="${-d2/2} ${-d2} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera52_link"/>
+  </joint>
+  <link name="camera52_link"/>
+
+  <joint name="camera53_joint" type="fixed">
+    <origin xyz="${-d3/2} ${-d3} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera53_link"/>
+  </joint>
+  <link name="camera53_link"/>
+
+  <joint name="camera54_joint" type="fixed">
+    <origin xyz="${-d4/2} ${-d4} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera54_link"/>
+  </joint>
+  <link name="camera54_link"/>
+
+  <joint name="camera55_joint" type="fixed">
+    <origin xyz="${-d5/2} ${-d5} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera55_link"/>
+  </joint>
+  <link name="camera55_link"/>
+
+  <joint name="camera56_joint" type="fixed">
+    <origin xyz="${d1/2} ${d1} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera56_link"/>
+  </joint>
+  <link name="camera56_link"/>
+
+  <joint name="camera57_joint" type="fixed">
+    <origin xyz="${d2/2} ${d2} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera57_link"/>
+  </joint>
+  <link name="camera57_link"/>
+
+  <joint name="camera58_joint" type="fixed">
+    <origin xyz="${d3/2} ${d3} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera58_link"/>
+  </joint>
+  <link name="camera58_link"/>
+
+  <joint name="camera59_joint" type="fixed">
+    <origin xyz="${d4/2} ${d4} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera59_link"/>
+  </joint>
+  <link name="camera59_link"/>
+
+  <joint name="camera60_joint" type="fixed">
+    <origin xyz="${d5/2} ${d5} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera60_link"/>
+  </joint>
+  <link name="camera60_link"/>
+
+  <joint name="camera61_joint" type="fixed">
+    <origin xyz="${-d1} ${-d1/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera61_link"/>
+  </joint>
+  <link name="camera61_link"/>
+
+  <joint name="camera62_joint" type="fixed">
+    <origin xyz="${-d2} ${-d2/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera62_link"/>
+  </joint>
+  <link name="camera62_link"/>
+
+  <joint name="camera63_joint" type="fixed">
+    <origin xyz="${-d3} ${-d3/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera63_link"/>
+  </joint>
+  <link name="camera63_link"/>
+
+  <joint name="camera64_joint" type="fixed">
+    <origin xyz="${-d4} ${-d4/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera64_link"/>
+  </joint>
+  <link name="camera64_link"/>
+
+  <joint name="camera65_joint" type="fixed">
+    <origin xyz="${-d5} ${-d5/2} ${h1}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera65_link"/>
+  </joint>
+  <link name="camera65_link"/>
+
+  <joint name="camera66_joint" type="fixed">
+    <origin xyz="${d1} ${d1/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera66_link"/>
+  </joint>
+  <link name="camera66_link"/>
+
+  <joint name="camera67_joint" type="fixed">
+    <origin xyz="${d2} ${d2/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera67_link"/>
+  </joint>
+  <link name="camera67_link"/>
+
+  <joint name="camera68_joint" type="fixed">
+    <origin xyz="${d3} ${d3/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera68_link"/>
+  </joint>
+  <link name="camera68_link"/>
+
+  <joint name="camera69_joint" type="fixed">
+    <origin xyz="${d4} ${d4/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera69_link"/>
+  </joint>
+  <link name="camera69_link"/>
+
+  <joint name="camera70_joint" type="fixed">
+    <origin xyz="${d5} ${d5/2} ${h1}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera70_link"/>
+  </joint>
+  <link name="camera70_link"/>
+
+  <joint name="camera71_joint" type="fixed">
+    <origin xyz="${d1/2} ${-d1} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera71_link"/>
+  </joint>
+  <link name="camera71_link"/>
+
+  <joint name="camera72_joint" type="fixed">
+    <origin xyz="${d2/2} ${-d2} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera72_link"/>
+  </joint>
+  <link name="camera72_link"/>
+
+  <joint name="camera73_joint" type="fixed">
+    <origin xyz="${d3/2} ${-d3} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera73_link"/>
+  </joint>
+  <link name="camera73_link"/>
+
+  <joint name="camera74_joint" type="fixed">
+    <origin xyz="${d4/2} ${-d4} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera74_link"/>
+  </joint>
+  <link name="camera74_link"/>
+
+  <joint name="camera75_joint" type="fixed">
+    <origin xyz="${d5/2} ${-d5} ${h1}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera75_link"/>
+  </joint>
+  <link name="camera75_link"/>
+
+  <joint name="camera76_joint" type="fixed">
+    <origin xyz="${-d1/2} ${d1} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera76_link"/>
+  </joint>
+  <link name="camera76_link"/>
+
+  <joint name="camera77_joint" type="fixed">
+    <origin xyz="${-d2/2} ${d2} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera77_link"/>
+  </joint>
+  <link name="camera77_link"/>
+
+  <joint name="camera78_joint" type="fixed">
+    <origin xyz="${-d3/2} ${d3} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera78_link"/>
+  </joint>
+  <link name="camera78_link"/>
+
+  <joint name="camera79_joint" type="fixed">
+    <origin xyz="${-d4/2} ${d4} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera79_link"/>
+  </joint>
+  <link name="camera79_link"/>
+
+  <joint name="camera80_joint" type="fixed">
+    <origin xyz="${-d5/2} ${d5} ${h1}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera80_link"/>
+  </joint>
+  <link name="camera80_link"/>
+
+</robot>
+

@@ -1,0 +1,5 @@
+<launch>
+  <arg name="cam_file" default="$(find semantic_mapping)/config/camera.cam"/>
+
+  <node pkg="semantic_mapping" type="mapping" name="mapping" output="screen" args="$(arg cam_file)"/>
+</launch>

@@ -1,0 +1,15 @@
+<launch>
+  <arg name="dir" default="$(find auto_label)/"/>
+  <arg name="file" default="$(find omtb_gazebo)/models/ycb_potted_meat_can/model.sdf"/>
+  <arg name="model" default="test"/>
+  <arg name="turns" default="1"/>
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="R" default="0"/>
+  <arg name="P" default="0"/>
+  <arg name="Y" default="0"/>
+
+  <node pkg="auto_label" type="save_pic.py" name="save_pic" output="screen"
+  args="-dir $(arg dir) -file $(arg file) -model $(arg model) -turns $(arg turns) -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg R) -P $(arg P) -Y $(arg Y)"/>
+</launch>

@@ -1,0 +1,4 @@
+<launch>
+  <arg name="dir" default="$(find auto_label)/"/>
+  <node pkg="auto_label" type="create_coco.py" name="create" output="screen" args="-dir $(arg dir)"/>
+</launch>

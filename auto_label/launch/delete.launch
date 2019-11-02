@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="auto_label" type="delete.py" name="save_pic" output="screen" />
+</launch>
