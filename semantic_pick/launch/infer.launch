@@ -1,0 +1,9 @@
+<launch>
+  <arg name="cfg" default="$(find semantic_pick)/config/e2e_mask_rcnn_R-50-FPN_1x.yaml"/>
+  <arg name="wts" default="$(find semantic_pick)/models/block.pkl"/>
+  <arg name="dir" default="/tmp/infer"/>
+  <arg name="thresh" default="0.85"/>
+
+  <node pkg="semantic_pick" type="infer.py" name="infer" output="screen"
+  args="-cfg $(arg cfg) -wts $(arg wts) -thresh $(arg thresh) -dir $(arg dir)"/>
+</launch>

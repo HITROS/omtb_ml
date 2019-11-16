@@ -54,69 +54,98 @@ LICENSES = [
 
 CATEGORIES = [
     {
+#        'id': 1,
+#        'name': 'bookshelf',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 2,
+#        'name': 'cabinet',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 3,
+#        'name': 'cafe_table',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 4,
+#        'name': 'cardboard_box',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 5,
+#        'name': 'car_wheel',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 6,
+#        'name': 'cinder_block',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 7,
+#        'name': 'coke_can',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 8,
+#        'name': 'construction_barrel',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 9,
+#        'name': 'construction_cone',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 10,
+#        'name': 'drc_practice_blue_cylinder',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 11,
+#        'name': 'drc_practice_hinged_door',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 12,
+#        'name': 'ycb_banana',
+#        'supercategory': 'gazebo',
+#    },
+#    {
+#        'id': 13,
+#        'name': 'ycb_potted_meat_can',
+#        'supercategory': 'gazebo',
+#    },
         'id': 1,
-        'name': 'bookshelf',
-        'supercategory': 'gazebo',
+        'name': 'ycb_base',
+        'supercategory': 'ycb',
     },
     {
         'id': 2,
-        'name': 'cabinet',
-        'supercategory': 'gazebo',
+        'name': 'ycb_blue_wood_block',
+        'supercategory': 'ycb',
     },
     {
         'id': 3,
-        'name': 'cafe_table',
-        'supercategory': 'gazebo',
+        'name': 'ycb_green_wood_block',
+        'supercategory': 'ycb',
     },
     {
         'id': 4,
-        'name': 'cardboard_box',
-        'supercategory': 'gazebo',
+        'name': 'ycb_orange_wood_block',
+        'supercategory': 'ycb',
     },
     {
         'id': 5,
-        'name': 'car_wheel',
-        'supercategory': 'gazebo',
+        'name': 'ycb_red_wood_block',
+        'supercategory': 'ycb',
     },
     {
         'id': 6,
-        'name': 'cinder_block',
-        'supercategory': 'gazebo',
-    },
-    {
-        'id': 7,
-        'name': 'coke_can',
-        'supercategory': 'gazebo',
-    },
-    {
-        'id': 8,
-        'name': 'construction_barrel',
-        'supercategory': 'gazebo',
-    },
-    {
-        'id': 9,
-        'name': 'construction_cone',
-        'supercategory': 'gazebo',
-    },
-    {
-        'id': 10,
-        'name': 'drc_practice_blue_cylinder',
-        'supercategory': 'gazebo',
-    },
-    {
-        'id': 11,
-        'name': 'drc_practice_hinged_door',
-        'supercategory': 'gazebo',
-    },
-    {
-        'id': 12,
-        'name': 'ycb_banana',
-        'supercategory': 'gazebo',
-    },
-    {
-        'id': 13,
-        'name': 'ycb_potted_meat_can',
-        'supercategory': 'gazebo',
+        'name': 'ycb_yellow_wood_block',
+        'supercategory': 'ycb',
     },
 ]
 

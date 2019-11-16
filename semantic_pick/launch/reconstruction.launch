@@ -1,0 +1,5 @@
+<launch>
+  <arg name="cam_file" default="$(find semantic_pick)/config/camera.cam"/>
+
+  <node pkg="semantic_pick" type="reconstruction" name="reconstruction" output="screen" args="$(arg cam_file)"/>
+</launch>

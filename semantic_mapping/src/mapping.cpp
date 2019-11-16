@@ -242,7 +242,8 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& input_cloud, boost::shared
     tf::StampedTransform transform;
     try
     {
-      listener.lookupTransform("robot1/camera_rgb_optical_frame", "robot1/odom", ros::Time(0), transform);
+      listener.waitForTransform("robot1/odom","robot1/camera_rgb_optical_frame" , ros::Time(0), ros::Duration(1.0));
+      listener.lookupTransform("robot1/odom","robot1/camera_rgb_optical_frame" , ros::Time(0), transform);
     }
     catch (tf::TransformException ex)
     {
@@ -256,7 +257,7 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& input_cloud, boost::shared
     t(0,3) = transform.getOrigin().x();
     t(1,3) = transform.getOrigin().y();
     t(2,3) = transform.getOrigin().z();
-    matrix_now = t.inverse().matrix();
+    matrix_now = t.matrix();
 
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZRGBA>());
     pcl::fromROSMsg(*input_cloud, *cloud);

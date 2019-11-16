@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<!-- Open_Manipulator Chain -->
+<robot name="robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find multi_camera_description)/multi_camera_description/camera.gazebo.xacro"/>
+  <xacro:arg name="d1"    default="0.40"/>
+  <xacro:arg name="h1"    default="0.11"/>
+  <xacro:property name="d1" value="$(arg d1)" />
+  <xacro:property name="h1" value="$(arg h1)" />
+  <xacro:property name="PI" value="3.14159265" />
+  <xacro:property name="c45" value="0.70710678" />
+  <xacro:property name="xd" value="$(arg xd)" />
+  <xacro:property name="yd" value="$(arg yd)" />
+  <xacro:property name="zd" value="$(arg zd)" />
+
+  <link name="base_footprint"/>
+
+  <joint name="base_joint1" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link1" />
+    <origin xyz="8 8 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link1">
+    <collision>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </collision>
+     <inertial>
+      <mass value="100" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0"
+               izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="base_joint2" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link2" />
+    <origin xyz="10 -10 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link2">
+    <collision>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </collision>
+     <inertial>
+      <mass value="100" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0"
+               izz="1.0" />
+    </inertial>
+  </link>
+  <joint name="base_joint3" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link3" />
+    <origin xyz="-10 10 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link3">
+    <collision>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </collision>
+     <inertial>
+      <mass value="100" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0"
+               izz="1.0" />
+    </inertial>
+  </link>
+  <joint name="base_joint4" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link4" />
+    <origin xyz="-10 -10 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link4">
+    <collision>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </collision>
+     <inertial>
+      <mass value="100" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0"
+               izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="camera1_joint" type="fixed">
+    <origin xyz="${-d1+xd} ${yd} ${h1+zd}" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera1_link"/>
+  </joint>
+  <link name="camera1_link"/>
+
+  <joint name="camera1_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera1_link"/>
+    <child link="camera1_optical_frame"/>
+  </joint>
+  <link name="camera1_optical_frame"/>
+
+  <joint name="camera2_joint" type="fixed">
+    <origin xyz="${d1+xd} ${yd} ${h1+zd}" rpy="0 0 ${PI}"/>
+    <parent link="base_footprint"/>
+    <child link="camera2_link"/>
+  </joint>
+  <link name="camera2_link"/>
+
+  <joint name="camera2_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera2_link"/>
+    <child link="camera2_optical_frame"/>
+  </joint>
+  <link name="camera2_optical_frame"/>
+
+  <joint name="camera3_joint" type="fixed">
+    <origin xyz="${xd} ${-d1+yd} ${h1+zd}" rpy="0 0 ${PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera3_link"/>
+  </joint>
+  <link name="camera3_link"/>
+
+  <joint name="camera3_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera3_link"/>
+    <child link="camera3_optical_frame"/>
+  </joint>
+  <link name="camera3_optical_frame"/>
+
+  <joint name="camera4_joint" type="fixed">
+    <origin xyz="${xd} ${d1+yd} ${h1+zd}" rpy="0 0 ${-PI/2}"/>
+    <parent link="base_footprint"/>
+    <child link="camera4_link"/>
+  </joint>
+  <link name="camera4_link"/>
+
+  <joint name="camera4_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera4_link"/>
+    <child link="camera4_optical_frame"/>
+  </joint>
+  <link name="camera4_optical_frame"/>
+
+  <joint name="camera5_joint" type="fixed">
+    <origin xyz="${-c45*d1+xd} ${-c45*d1+yd} ${h1+zd}" rpy="0 0 ${PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera5_link"/>
+  </joint>
+  <link name="camera5_link"/>
+
+  <joint name="camera5_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera5_link"/>
+    <child link="camera5_optical_frame"/>
+  </joint>
+  <link name="camera5_optical_frame"/>
+
+  <joint name="camera6_joint" type="fixed">
+    <origin xyz="${-c45*d1+xd} ${c45*d1+yd} ${h1+zd}" rpy="0 0 ${-PI/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera6_link"/>
+  </joint>
+  <link name="camera6_link"/>
+
+  <joint name="camera6_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera6_link"/>
+    <child link="camera6_optical_frame"/>
+  </joint>
+  <link name="camera6_optical_frame"/>
+
+  <joint name="camera7_joint" type="fixed">
+    <origin xyz="${c45*d1+xd} ${-c45*d1+yd} ${h1+zd}" rpy="0 0 ${PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera7_link"/>
+  </joint>
+  <link name="camera7_link"/>
+
+  <joint name="camera7_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera7_link"/>
+    <child link="camera7_optical_frame"/>
+  </joint>
+  <link name="camera7_optical_frame"/>
+
+  <joint name="camera8_joint" type="fixed">
+    <origin xyz="${c45*d1+xd} ${c45*d1+yd} ${h1+zd}" rpy="0 0 ${-PI*3/4}"/>
+    <parent link="base_footprint"/>
+    <child link="camera8_link"/>
+  </joint>
+  <link name="camera8_link"/>
+
+  <joint name="camera8_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+    <parent link="camera8_link"/>
+    <child link="camera8_optical_frame"/>
+  </joint>
+  <link name="camera8_optical_frame"/>
+
+</robot>
+
